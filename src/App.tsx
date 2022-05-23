@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 
+import { Main } from './components/pages/Main';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { AddForm } from './components/pages/AddForm';
+import { EditForm } from './components/pages/EditForm';
+import { Delete } from './components/pages/Delete';
+
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <Header/>
+//       <Main/>
+//       <Footer/>
+//     </div>
+//   );
+// }
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route index element = {<Main/>} />
+        <Route path='add' element={<AddForm/>} />
+        <Route path='edit/:id' element={<EditForm/>}/>
+        <Route path='/delete/:id/:name' element={<Delete/>}/>
+      </Routes>
+    </BrowserRouter>
+  )
 }
-
 export default App;
